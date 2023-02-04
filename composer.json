@@ -1,0 +1,25 @@
+{
+    "description": "Essential and frequently needed things for development with Neos Flow.",
+    "type": "neos-package",
+    "name": "neosrulez/neos-essentials",
+    "require": {
+        "neos/flow": "~8.2.0",
+        "neos/imagine": "^3.3",
+        "neos/media": "^8.2",
+        "neos/fusion": "^8.2",
+        "neos/fusion-afx": "^8.2",
+        "neos/fusion-form": "^2.1",
+        "neos/swiftmailer": "^7.3",
+        "gedmo/doctrine-extensions": "^3.10 || *"
+    },
+    "autoload": {
+        "psr-4": {
+            "NeosRulez\\Neos\\Essentials\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "NeosRulez.Neos.Essentials"
+        }
+    }
+}

@@ -1,0 +1,77 @@
+prototype(NeosRulez.Neos.Essentials:LoginForm) < prototype(Neos.Fusion:Component) {
+
+    actionName = ${'authenticate'}
+    controllerName = ${'Login'}
+    packageName = ${'NeosRulez.Neos.Essentials'}
+    formName = ${'login'}
+
+    username = Neos.Fusion:Join {
+        id = 'username'
+        fieldName = '__authentication[Neos][Flow][Security][Authentication][Token][UsernamePassword][username]'
+        placeholder = 'Mail address'
+        wrapperClassName = 'form-floating mb-3'
+        inputClassName = 'form-control'
+        defaultValue = false
+        label = 'Username'
+        fieldType = 'email'
+    }
+
+    password = Neos.Fusion:Join {
+        id = 'password'
+        fieldName = '__authentication[Neos][Flow][Security][Authentication][Token][UsernamePassword][password]'
+        placeholder = 'Password'
+        wrapperClassName = 'form-floating mb-3'
+        inputClassName = 'form-control'
+        defaultValue = false
+        label = 'Username'
+    }
+
+    loginButton = Neos.Fusion:Join {
+        id = 'loginButton'
+        wrapperClassName = 'mb-3'
+        inputClassName = 'btn btn-primary'
+        label = 'Login'
+    }
+
+    renderer = afx`
+        <Neos.Fusion:Fragment @if.render={props.packageName} >
+            <Neos.Fusion.Form:Form form.target.action={props.actionName} form.target.controller={props.controllerName} form.target.package={props.packageName} attributes.name={props.formName} >
+
+                <div class={props.username.wrapperClassName} >
+                    <Neos.Fusion.Form:Input
+                        field.name={props.username.fieldName}
+                        attributes.required="required"
+                        attributes.id={props.username.id}
+                        attributes.placeholder={props.username.placeholder}
+                        attributes.class={props.username.inputClassName}
+                        attributes.autocapitalize="none"
+                        attributes.type={props.username.fieldType}
+                        attributes.autocomplete="false"
+                        attributes.value={props.username.defaultValue}
+                    />
+                    <label for={props.username.id} >{props.username.label}</label>
+                </div>
+
+                <div class={props.password.wrapperClassName} >
+                    <Neos.Fusion.Form:Password
+                        field.name={props.password.fieldName}
+                        attributes.required="required"
+                        attributes.id={props.password.id}
+                        attributes.placeholder={props.password.placeholder}
+                        attributes.class={props.password.inputClassName}
+                        attributes.autocomplete="false"
+                        attributes.value={props.password.defaultValue}
+                    />
+                    <label for={props.password.id} >{props.password.label}</label>
+                </div>
+
+                <div class={props.loginButton.wrapperClassName} >
+                    <Neos.Fusion.Form:Button attributes.id={props.loginButton.id} attributes.class={props.loginButton.inputClassName} >
+                        {props.loginButton.label}
+                    </Neos.Fusion.Form:Button>
+                </div>
+
+            </Neos.Fusion.Form:Form>
+        </Neos.Fusion:Fragment>
+    `
+}

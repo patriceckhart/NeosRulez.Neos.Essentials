@@ -1,0 +1,46 @@
+NeosRulez:
+  Neos:
+    Essentials:
+      login:
+        ifAuthenticated:
+          class: Acme\Package\Domain\Service\IsAuthenticated
+          redirectToUri: /dashboard
+        afterLogout:
+          class: Acme\Package\Domain\Service\Logout
+          redirectToUri: /homepage
+        onAuthenticationSuccess:
+          class: Acme\Package\Domain\Service\AuthSuccess
+          redirectToUri: /dashboard
+        onAuthenticationFailure:
+          class: Acme\Package\Domain\Service\AuthFailure
+          redirectToUri: /homepage
+      account:
+        defaultRole: NeosRulez.Neos.Essentials:User
+        afterCreateAccount:
+          class: Acme\Package\Domain\Service\UserService
+      user:
+        model:
+          class: Acme\Package\Domain\Model\User
+        repository:
+          class: Acme\Package\Domain\Repository\UserRepository
+      mail:
+        senderMail: noreply@foo.com
+        senderName: Sender name
+
+Neos:
+  Flow:
+    security:
+      authentication:
+        providers:
+          'NeosRulez.Neos.Essentials:Login':
+            provider: 'PersistedUsernamePasswordProvider'
+            entryPoint: 'WebRedirect'
+    persistence:
+      doctrine:
+        filters:
+          soft-deletable: 'Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter'
+        eventListeners:
+          - events: [ 'onFlush', 'loadClassMetadata' ]
+            listener: 'Gedmo\SoftDeleteable\SoftDeleteableListener'
+          - events: [ 'prePersist', 'onFlush', 'loadClassMetadata' ]
+            listener: 'Gedmo\Timestampable\TimestampableListener'

@@ -1,0 +1,37 @@
+prototype(NeosRulez.Neos.Essentials:Page) < prototype(Neos.Fusion:Component) {
+    docType = ${'<!doctype html>'}
+
+    htmlTag = Neos.Fusion:Join {
+        lang = ${'en'}
+        className = false
+    }
+
+    head = Neos.Fusion:Component {
+
+        viewport = 'width=device-width, initial-scale=1, user-scalable=no'
+        robots = 'noindex,nofollow'
+
+        renderer = afx`
+            <meta charset="utf-8" />
+            <meta @if.render={props.viewport} name="viewport" content={props.viewport} />
+            <meta @if.render={props.robots} name="robots" content={props.robots} />
+        `
+    }
+
+    bodyTag = Neos.Fusion:Join {
+        className = false
+    }
+
+    renderer = afx`
+        {props.docType}
+        <html lang={props.htmlTag.lang} class={props.htmlTag.className} >
+        <head>
+            {props.head}
+        </head>
+        <body class={props.bodyTag.className} >
+            {props.content}
+        </body>
+        </html>
+    `
+    @process.debugDump = Neos.Fusion:DebugDump
+}

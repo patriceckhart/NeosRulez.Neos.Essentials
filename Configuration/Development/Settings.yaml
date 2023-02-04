@@ -1,0 +1,9 @@
+Neos:
+  Flow:
+    error:
+      debugger:
+        recursionLimit: 90
+    session:
+      inactivityTimeout: 604800
+      cookie:
+        lifetime: 604800
