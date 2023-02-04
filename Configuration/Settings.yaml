@@ -1,31 +1,31 @@
 NeosRulez:
   Neos:
     Essentials:
-      login:
-        ifAuthenticated:
-          class: Acme\Package\Domain\Service\IsAuthenticated
-          redirectToUri: /dashboard
-        afterLogout:
-          class: Acme\Package\Domain\Service\Logout
-          redirectToUri: /homepage
-        onAuthenticationSuccess:
-          class: Acme\Package\Domain\Service\AuthSuccess
-          redirectToUri: /dashboard
-        onAuthenticationFailure:
-          class: Acme\Package\Domain\Service\AuthFailure
-          redirectToUri: /homepage
-      account:
-        defaultRole: NeosRulez.Neos.Essentials:User
-        afterCreateAccount:
-          class: Acme\Package\Domain\Service\UserService
-      user:
-        model:
-          class: Acme\Package\Domain\Model\User
-        repository:
-          class: Acme\Package\Domain\Repository\UserRepository
+#      login:
+#        ifAuthenticated:
+#          class: Acme\Package\Domain\Service\IsAuthenticated
+#          redirectToUri: /dashboard
+#        afterLogout:
+#          class: Acme\Package\Domain\Service\Logout
+#          redirectToUri: /homepage
+#        onAuthenticationSuccess:
+#          class: Acme\Package\Domain\Service\AuthSuccess
+#          redirectToUri: /dashboard
+#        onAuthenticationFailure:
+#          class: Acme\Package\Domain\Service\AuthFailure
+#          redirectToUri: /homepage
+#      account:
+#        defaultRole: NeosRulez.Neos.Essentials:User
+#        afterCreateAccount:
+#          class: Acme\Package\Domain\Service\UserService
+#      user:
+#        model:
+#          class: Acme\Package\Domain\Model\User
+#        repository:
+#          class: Acme\Package\Domain\Repository\UserRepository
       mail:
         senderMail: noreply@foo.com
-        senderName: Sender name
+        senderName: Flow application
 
 Neos:
   Flow:
