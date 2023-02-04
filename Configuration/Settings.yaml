@@ -35,6 +35,11 @@ Neos:
           'NeosRulez.Neos.Essentials:Login':
             provider: 'PersistedUsernamePasswordProvider'
             entryPoint: 'WebRedirect'
+            requestPatterns:
+              'NeosRulez.Neos.Essentials:NeosFrontend':
+                pattern: NeosRulez\Neos\Essentials\Security\NeosRequestPattern
+                patternOptions:
+                  matchFrontend: true
     persistence:
       doctrine:
         filters:
