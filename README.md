@@ -156,6 +156,44 @@ $userEntity->getAccount(); # Returns the Neos Flow Account referenced by the use
 $userEntity->isActive(); # Returns a boolean
 ```
 
+## Fusion page component
+A page prototype to get an output easily.
+
+```neosfusion
+Acme.Package.StandardController.index = NeosRulez.Neos.Essentials:Page {
+
+    htmlTag {
+        lang = 'de'
+    }
+
+    content = Neos.Fusion:Component {
+
+        renderer = afx`
+            <div class="app">
+                ...
+            </div>
+        `
+    }
+}
+```
+
+## Fusion login form component
+The login component works out-of-the-box.
+
+```neosfusion
+prototype(Acme.Package:Component.LoginForm) < prototype(NeosRulez.Neos.Essentials:LoginForm) {
+
+    username {
+        label = 'Your username'
+        placeholder = 'Enter your username ...'
+    }
+
+    loginButton {
+        label = 'Login now!'
+    }
+}
+```
+
 ## Author
 
 * E-Mail: mail@patriceckhart.com
