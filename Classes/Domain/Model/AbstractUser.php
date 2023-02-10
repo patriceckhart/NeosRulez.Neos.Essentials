@@ -9,9 +9,6 @@ use Neos\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 use Neos\Flow\Security\Account;
 
-/**
- * @Flow\Entity
- */
 abstract class AbstractUser extends AbstractModel
 {
 
