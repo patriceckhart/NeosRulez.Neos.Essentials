@@ -13,11 +13,6 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
 use Flawr\Flawr\Domain\Model\User;
 
-/**
- * @Gedmo\SoftDeleteable(fieldName="deletedAt")
- * @ORM\MappedSuperclass
- * @Flow\Entity
- */
 abstract class AbstractModel
 {
 
