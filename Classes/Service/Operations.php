@@ -8,7 +8,7 @@ namespace NeosRulez\Neos\Essentials\Service;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
 
-abstract class Operations extends AbstractService
+class Operations extends AbstractService
 {
 
     /**
