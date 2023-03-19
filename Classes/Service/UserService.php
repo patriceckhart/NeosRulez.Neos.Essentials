@@ -91,7 +91,7 @@ class UserService extends AbstractService
      */
     public function createUser(string $email, string|null $password = null, string|null $role = null): string
     {
-        $authenticationProviderName = $this->securitySettings['authentication']['providers'][0];
+        $authenticationProviderName = $this->securitySettings['authentication']['providers']['NeosRulez.Neos.Essentials:Login'];
 
         if($role === null) {
             $role = $this->accountSettings['defaultRole'];
