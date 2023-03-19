@@ -11,7 +11,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
-use Flawr\Flawr\Domain\Model\User;
 
 abstract class AbstractModel
 {
