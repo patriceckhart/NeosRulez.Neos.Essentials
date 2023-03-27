@@ -87,11 +87,12 @@ class UserService extends AbstractService
      * @param string $email
      * @param string|null $password
      * @param string|null $role
-     * @return string
+     * @param bool $cli
+     * @return Account
      */
-    public function createUser(string $email, string|null $password = null, string|null $role = null): string
+    public function createUser(string $email, string|null $password = null, string|null $role = null, bool $cli = false): Account
     {
-        $authenticationProviderName = $this->securitySettings['authentication']['providers']['NeosRulez.Neos.Essentials:Login'];
+        $authenticationProviderName = array_key_first($this->securitySettings['authentication']['providers']);
 
         if($role === null) {
             $role = $this->accountSettings['defaultRole'];
@@ -105,9 +106,11 @@ class UserService extends AbstractService
         $account->setCredentialsSource($this->hashService->hashPassword($password));
         $this->accountRepository->add($account);
 
-        $this->operations->execute('afterCreateAccount', ['account' => $account, 'password' => $password], $this->accountSettings);
+        if(!$cli) {
+            $this->operations->execute('afterCreateAccount', ['account' => $account, 'password' => $password], $this->accountSettings);
+        }
 
-        return $password;
+        return $account;
     }
 
     /**
@@ -134,7 +137,7 @@ class UserService extends AbstractService
                     if(array_key_exists('repository', $this->userSettings)) {
                         if(array_key_exists('class', $this->userSettings['repository'])) {
                             $userRepository = $this->objectManager->get($this->userSettings['repository']['class']);
-                            return $userRepository->findByAccount($this->securityContext->getAccount());
+                            return $userRepository->findByAccount($this->securityContext->getAccount()) ? $userRepository->findByAccount($this->securityContext->getAccount())->getFirst() : null;
                         }
                     }
                 }
