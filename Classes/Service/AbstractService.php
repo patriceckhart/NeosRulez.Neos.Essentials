@@ -19,6 +19,10 @@ abstract class AbstractService
         $this->settings = $settings;
     }
 
-    protected ObjectManagerInterface $objectManager;
+    /**
+     * @Flow\Inject
+     * @var ObjectManagerInterface
+     */
+    protected $objectManager;
 
 }
