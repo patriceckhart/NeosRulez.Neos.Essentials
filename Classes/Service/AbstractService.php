@@ -12,13 +12,6 @@ use Neos\Flow\ObjectManagement\ObjectManagerInterface;
 abstract class AbstractService
 {
 
-    protected array $settings;
-
-    public function injectSettings(array $settings): void
-    {
-        $this->settings = $settings;
-    }
-
     /**
      * @Flow\Inject
      * @var ObjectManagerInterface
