@@ -12,6 +12,11 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
 
+/**
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt")
+ * @ORM\MappedSuperclass
+ * @Flow\Entity
+ */
 abstract class AbstractModel
 {
 
