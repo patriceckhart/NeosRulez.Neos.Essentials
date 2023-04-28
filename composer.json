@@ -3,7 +3,7 @@
     "type": "neos-package",
     "name": "neosrulez/neos-essentials",
     "require": {
-        "neos/neos": "^8.0 || ^8.1 || ^8.2 || ^8.3",
+        "neos/flow": "^8.0 || ^8.1 || ^8.2 || ^8.3",
         "neos/imagine": "^3.3",
         "neos/media": "^8.2",
         "neos/fusion": "^8.2",
