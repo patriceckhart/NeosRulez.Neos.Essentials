@@ -8,6 +8,7 @@ namespace NeosRulez\Neos\Essentials\Service;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
 use Neos\SwiftMailer\Message;
+use Neos\Fusion\View\FusionView;
 
 class MailService extends AbstractService
 {
