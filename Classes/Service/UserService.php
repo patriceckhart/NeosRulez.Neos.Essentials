@@ -6,6 +6,7 @@ namespace NeosRulez\Neos\Essentials\Service;
  */
 
 use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Security\Policy\Role;
 use Neos\Flow\Security\RequestPatternInterface;
 use Neos\Flow\Security\Policy\PolicyService;
 use Neos\Flow\Security\Authentication\AuthenticationManagerInterface;
@@ -111,6 +112,21 @@ class UserService extends AbstractService
         }
 
         return $account;
+    }
+
+    /**
+     * @param Account $account
+     * @param array $roles
+     * @return void
+     */
+    public function addRoles(Account $account, array $roles): void
+    {
+        $items = [];
+        foreach ($roles as $role) {
+            $items[] = new Role($role);
+        }
+        $account->setRoles($items);
+        $this->accountRepository->update($account);
     }
 
     /**
